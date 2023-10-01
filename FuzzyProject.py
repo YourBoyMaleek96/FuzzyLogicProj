@@ -63,3 +63,5 @@ HistoricalMatches['even'] = fuzz.trimf(HistoricalMatches.universe, [0.25, 0.5, 0
 HistoricalMatches['positive'] = fuzz.trimf(HistoricalMatches.universe, [0.5, 1, 1.1])
 
 #Fuzzy Rules 
+#test
+new data = 5
