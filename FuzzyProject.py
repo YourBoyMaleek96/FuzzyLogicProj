@@ -2,19 +2,20 @@ import numpy as np
 import skfuzzy as sk
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
+import matplotlib.pyplot as plt
 
 # input vaariables
-PassingYards = ctrl.Antecedent(np.arange(0,200,1), 'PassingYards')
-RushYards = ctrl.Antecedent(np.arange(0,150,1), 'RushYards')
-Sacks = ctrl.Antecedent(np.arange(0,3.0,1), 'Sacks')
-Interceptions = ctrl.Antecedent(np.arange(0,1.0,1), 'Interceptions')
-TravelDistance = ctrl.Antecedent(np.arange(0,2500,1), 'TravelDistance') 
-Weather = ctrl.Antecedent(np.arange(0,1.1,0.1), 'Weather')
-HomeField = ctrl.Antecedent(np.arange(0,1.1,0.1), 'HomeField')
-HistoricalMatches = ctrl.Antecedent (np.arange (0,1.1,0.1),'HistoricMatches')
+PassingYards = ctrl.Antecedent(np.arange(0,300,1), 'PassingYards')
+RushYards = ctrl.Antecedent(np.arange(0,250,1), 'RushYards')
+Sacks = ctrl.Antecedent(np.arange(0,5,1), 'Sacks')
+Interceptions = ctrl.Antecedent(np.arange(0,5,1), 'Interceptions')
+TravelDistance = ctrl.Antecedent(np.arange(0,3000,1), 'TravelDistance') 
+Weather = ctrl.Antecedent(np.arange(0,1.5,0.1), 'Weather')
+HomeField = ctrl.Antecedent(np.arange(0,1.5,0.1), 'HomeField')
+HistoricalMatches = ctrl.Antecedent (np.arange (0,1.5,0.1),'HistoricMatches')
 
 #Output variable
-WinningPercent = ctrl.Antecedent(np.arange(0,1.1,0.1), 'WinningPercent')
+WinningPercent = ctrl.Antecedent(np.arange(0,1.5,0.1), 'WinningPercent')
 
 """ 
 Membership functions are defined below.
@@ -40,7 +41,7 @@ Sacks['high'] = fuzz.trimf(Sacks.universe, [3, 5, 5])
 #Interceptions
 Interceptions['low'] = fuzz.trimf(Interceptions.universe, [0, 0, 1])
 Interceptions['average'] = fuzz.trimf(Interceptions.universe, [0.5, 1, 1.5])
-Interceptions['high'] = fuzz.trimf(Interceptions.universe, [1, 2, 2])
+Interceptions['high'] = fuzz.trimf(Interceptions.universe, [1, 2, 3])
 
 # TravelDistance
 TravelDistance['low'] = fuzz.trimf(TravelDistance.universe, [0, 500, 1000])
@@ -48,9 +49,9 @@ TravelDistance['medium'] = fuzz.trimf(TravelDistance.universe, [1000, 1500, 2000
 TravelDistance['high'] = fuzz.trimf(TravelDistance.universe, [2000, 2500, 2500])
 
 #Weather 
-Weather['bad'] = fuzz.trimf(Weather.universe, [0, 0, 0.5])
-Weather['ok'] = fuzz.trimf(Weather.universe, [0.25, 0.5, 0.75])
-Weather['good'] = fuzz.trimf(Weather.universe, [0.5, 1, 1])
+Weather['bad'] = fuzz.trimf(Weather.universe, [0, 0, 1])
+Weather['ok'] = fuzz.trimf(Weather.universe, [0.5, 1, 1.5])
+Weather['good'] = fuzz.trimf(Weather.universe, [1, 2, 3])
 
 #Homefield 
 HomeField['away'] = fuzz.trimf(HomeField.universe, [0, 0, 0.5])
@@ -64,3 +65,21 @@ HistoricalMatches['positive'] = fuzz.trimf(HistoricalMatches.universe, [0.5, 1, 
 
 #Fuzzy Rules 
 
+
+
+
+# Output variable
+WinningPercent = ctrl.Consequent(np.arange(0, 3.1, 1), 'WinningPercent') 
+WinningPercent['Lose'] = fuzz.trimf(WinningPercent.universe, [0, 0, 1])
+WinningPercent['Draw'] = fuzz.trimf(WinningPercent.universe, [0.5, 1, 1.5])
+WinningPercent['Win'] = fuzz.trimf(WinningPercent.universe, [1, 2, 3])
+
+# Define the antecedents and consequent
+antecedents = [PassingYards, RushYards, Sacks, Interceptions, TravelDistance, Weather, HomeField, HistoricalMatches]
+consequent = WinningPercent
+
+# Plot the membership functions
+for var in antecedents + [consequent]:
+    var.view()
+
+plt.show()
