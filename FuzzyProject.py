@@ -5,81 +5,164 @@ from skfuzzy import control as ctrl
 import matplotlib.pyplot as plt
 
 # input vaariables
-PassingYards = ctrl.Antecedent(np.arange(0,300,1), 'PassingYards')
-RushYards = ctrl.Antecedent(np.arange(0,250,1), 'RushYards')
-Sacks = ctrl.Antecedent(np.arange(0,5,1), 'Sacks')
-Interceptions = ctrl.Antecedent(np.arange(0,5,1), 'Interceptions')
-TravelDistance = ctrl.Antecedent(np.arange(0,3000,1), 'TravelDistance') 
-Weather = ctrl.Antecedent(np.arange(0,1.5,0.1), 'Weather')
-HomeField = ctrl.Antecedent(np.arange(0,1.5,0.1), 'HomeField')
-HistoricalMatches = ctrl.Antecedent (np.arange (0,1.5,0.1),'HistoricMatches')
-
-#Output variable
-WinningPercent = ctrl.Antecedent(np.arange(0,1.5,0.1), 'WinningPercent')
-
-""" 
-Membership functions are defined below.
-They are Passing Yards, Rushing Yards, Sacks, Interceptions,
-TravelDistance, Weather, HomeField  and Historical Matches. 
-"""
-
-#Passing Yards 
-PassingYards['low'] = fuzz.trimf(PassingYards.universe, [0, 0, 100])
-PassingYards['average'] = fuzz.trimf(PassingYards.universe, [50, 100, 150])
-PassingYards['high'] = fuzz.trimf(PassingYards.universe, [200, 200, 300])
-
-#Rush Yards 
-RushYards['low'] = fuzz.trimf(RushYards.universe, [0, 0, 130])
-RushYards['average'] = fuzz.trimf(RushYards.universe, [100, 130, 160])
-RushYards['high'] = fuzz.trimf(RushYards.universe, [130, 200, 200])
-
-#Sacks
-Sacks['low'] = fuzz.trimf(Sacks.universe, [0, 0, 3])
-Sacks['average'] = fuzz.trimf(Sacks.universe, [2, 3, 4])
-Sacks['high'] = fuzz.trimf(Sacks.universe, [3, 5, 5])
-
-#Interceptions
-Interceptions['low'] = fuzz.trimf(Interceptions.universe, [0, 0, 1])
-Interceptions['average'] = fuzz.trimf(Interceptions.universe, [0.5, 1, 1.5])
-Interceptions['high'] = fuzz.trimf(Interceptions.universe, [1, 2, 3])
-
-# TravelDistance
-TravelDistance['low'] = fuzz.trimf(TravelDistance.universe, [0, 500, 1000])
-TravelDistance['medium'] = fuzz.trimf(TravelDistance.universe, [1000, 1500, 2000])
-TravelDistance['high'] = fuzz.trimf(TravelDistance.universe, [2000, 2500, 2500])
-
-#Weather 
-Weather['bad'] = fuzz.trimf(Weather.universe, [0, 0, 1])
-Weather['ok'] = fuzz.trimf(Weather.universe, [0.5, 1, 1.5])
-Weather['good'] = fuzz.trimf(Weather.universe, [1, 2, 3])
-
-#Homefield 
-HomeField['away'] = fuzz.trimf(HomeField.universe, [0, 0, 0.5])
-HomeField['neutral'] = fuzz.trimf(HomeField.universe, [0.25, 0.5, 0.75])
-HomeField['home'] = fuzz.trimf(HomeField.universe, [0.5, 1, 1])
-
-#Historic matches 
-HistoricalMatches['negative'] = fuzz.trimf(HistoricalMatches.universe, [0, 0, 0.5])
-HistoricalMatches['even'] = fuzz.trimf(HistoricalMatches.universe, [0.25, 0.5, 0.75])
-HistoricalMatches['positive'] = fuzz.trimf(HistoricalMatches.universe, [0.5, 1, 1.1])
-
-#Fuzzy Rules 
-
-
+PassingYards = ctrl.Antecedent(np.arange(0,400,1), 'PassingYards')
+RushYards = ctrl.Antecedent(np.arange(0,300,1), 'RushYards')
+Sacks = ctrl.Antecedent(np.arange(0,6,0.1), 'Sacks')
+Interceptions = ctrl.Antecedent(np.arange(0.4, 1.9, 0.1), 'Interceptions')
+TravelDistance = ctrl.Antecedent(np.arange(0,4500,1), 'TravelDistance') 
+Weather = ctrl.Antecedent(np.arange(0,1.8,0.1), 'Weather')
+HomeField = ctrl.Antecedent(np.arange(0,1.8,0.1), 'HomeField')
 
 
 # Output variable
-WinningPercent = ctrl.Consequent(np.arange(0, 3.1, 1), 'WinningPercent') 
-WinningPercent['Lose'] = fuzz.trimf(WinningPercent.universe, [0, 0, 1])
-WinningPercent['Draw'] = fuzz.trimf(WinningPercent.universe, [0.5, 1, 1.5])
-WinningPercent['Win'] = fuzz.trimf(WinningPercent.universe, [1, 2, 3])
+WinningPercent = ctrl.Consequent(np.arange (0,1.8,0.1), 'WinningPercent') 
 
-# Define the antecedents and consequent
-antecedents = [PassingYards, RushYards, Sacks, Interceptions, TravelDistance, Weather, HomeField, HistoricalMatches]
-consequent = WinningPercent
+
+
+""" 
+Input and Output Membership functions are defined below.
+Inputs  are Passing Yards, Rushing Yards, Sacks, Interceptions,
+TravelDistance, Weather, HomeField  and Historical Matches. 
+Output is winning percentage.
+
+"""
+
+#Passing Yards 
+PassingYards['low'] = fuzz.gaussmf(PassingYards.universe, 131,36)
+PassingYards['average'] = fuzz.gaussmf(PassingYards.universe,218,36)
+PassingYards['high'] = fuzz.gaussmf(PassingYards.universe, 289, 36)
+
+#Rush Yards 
+RushYards['low'] = fuzz.gaussmf(RushYards.universe,76,23)
+RushYards['average'] = fuzz.gaussmf(RushYards.universe,121,23)
+RushYards['high'] = fuzz.gaussmf(RushYards.universe, 177,23)
+
+#Sacks
+Sacks['low'] = fuzz.gaussmf(Sacks.universe, 1.2,0.6)
+Sacks['average'] = fuzz.gaussmf(Sacks.universe, 2.4,0.6)
+Sacks['high'] = fuzz.gaussmf(Sacks.universe, 3.9,0.6)
+
+#Interceptions
+Interceptions['low'] = fuzz.gaussmf(Interceptions.universe, 0.4, 0.2)
+Interceptions['average'] = fuzz.gaussmf(Interceptions.universe, 0.8, 0.2)
+Interceptions['high'] = fuzz.gaussmf(Interceptions.universe, 1.2, 0.2)
+
+# TravelDistance
+TravelDistance['low'] = fuzz.gaussmf(TravelDistance.universe, 380,711)
+TravelDistance['average'] = fuzz.gaussmf(TravelDistance.universe,1056,711)
+TravelDistance['high'] = fuzz.gaussmf(TravelDistance.universe,2320,711)
+
+#Weather 
+Weather['bad'] = fuzz.gaussmf(Weather.universe, 0,0.2)
+Weather['ok'] = fuzz.gaussmf(Weather.universe, 0.5,0.2)
+Weather['good'] = fuzz.gaussmf(Weather.universe, 1,0.2)
+
+#Homefield 
+HomeField['away'] = fuzz.gaussmf(HomeField.universe, 0,0.2)
+HomeField['neutral'] = fuzz.gaussmf(HomeField.universe, 0.5,0.2)
+HomeField['home'] = fuzz.gaussmf(HomeField.universe, 1.0,0.2)
+
+
+
+#Winning percent
+WinningPercent['Lose'] = fuzz.gaussmf(WinningPercent.universe, 0.2,0.1)
+WinningPercent['Draw'] = fuzz.gaussmf(WinningPercent.universe, 0.5,0.1)
+WinningPercent['Win'] = fuzz.gaussmf(WinningPercent.universe, 0.8,0.1)
+
+
+team1_rules = [
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['high'] & Sacks['low'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['good'] & HomeField['home'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['average'] & RushYards['average'] & Sacks['low'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['good'] & HomeField['home'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['average'] & Sacks['low'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['good'] & HomeField['home'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['high'] & Sacks['average'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['good'] & HomeField['home'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['high'] & Sacks['low'] &
+        Interceptions['average'] & TravelDistance['low'] & Weather['good'] & HomeField['home'],
+        WinningPercent['Win']
+    )
+]
+
+team2_rules = [
+    ctrl.Rule(
+        PassingYards['low'] & RushYards['low'] & Sacks['high'] &
+        Interceptions['high'] & TravelDistance['high'] & Weather['bad'] & HomeField['away'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['average'] & RushYards['average'] & Sacks['high'] &
+        Interceptions['high'] & TravelDistance['high'] & Weather['bad'] & HomeField['away'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['low'] & RushYards['average'] & Sacks['high'] &
+        Interceptions['high'] & TravelDistance['high'] & Weather['bad'] & HomeField['away'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['low'] & RushYards['low'] & Sacks['average'] &
+        Interceptions['high'] & TravelDistance['high'] & Weather['bad'] & HomeField['away'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['low'] & RushYards['low'] & Sacks['high'] &
+        Interceptions['average'] & TravelDistance['high'] & Weather['bad'] & HomeField['away'],
+        WinningPercent['Lose']
+    )
+]
+
+# Combine all rules
+rules = team1_rules + team2_rules
+
+# Create control system
+system = ctrl.ControlSystem(rules)
+
+
+
+team1_input = {
+    'PassingYards': 211,
+    'RushYards': 63,
+    'Sacks': 2,
+    'Interceptions': 1,
+    'TravelDistance': 280,
+    'Weather': 0,
+    'HomeField': 0,
+}
+
+team2_input = {
+    'PassingYards': 297,
+    'RushYards': 83,
+    'Sacks': 3,
+    'Interceptions': 1,
+    'TravelDistance': 0,
+    'Weather': 0,
+    'HomeField': 1,
+}
+
+
+
 
 # Plot the membership functions
-for var in antecedents + [consequent]:
+
+
+# Plot the membership functions
+for var in [PassingYards, RushYards, Sacks, Interceptions, TravelDistance, Weather, HomeField, WinningPercent]:
     var.view()
 
 plt.show()
+
