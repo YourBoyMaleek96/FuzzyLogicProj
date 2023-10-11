@@ -95,6 +95,56 @@ team1_rules = [
         PassingYards['high'] & RushYards['high'] & Sacks['low'] &
         Interceptions['average'] & TravelDistance['low'] & Weather['good'] & HomeField['home'],
         WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['average'] & RushYards['average'] & Sacks['average'] &
+        Interceptions['average'] & TravelDistance['average'] & Weather['ok'] & HomeField['neutral'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['average'] & RushYards['low'] & Sacks['low'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['good'] & HomeField['home'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['high'] & Sacks['average'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['good'] & HomeField['home'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['average'] & Sacks['low'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['ok'] & HomeField['home'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['average'] & RushYards['average'] & Sacks['average'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['ok'] & HomeField['home'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['average'] & RushYards['average'] & Sacks['low'] &
+        Interceptions['average'] & TravelDistance['low'] & Weather['good'] & HomeField['home'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['low'] & Sacks['low'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['good'] & HomeField['home'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['average'] & Sacks['low'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['ok'] & HomeField['home'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['average'] & Sacks['low'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['good'] & HomeField['neutral'],
+        WinningPercent['Win']
+    ),
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['low'] & Sacks['average'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['good'] & HomeField['neutral'],
+        WinningPercent['Win']
     )
 ]
 
@@ -122,6 +172,56 @@ team2_rules = [
     ctrl.Rule(
         PassingYards['low'] & RushYards['low'] & Sacks['high'] &
         Interceptions['average'] & TravelDistance['high'] & Weather['bad'] & HomeField['away'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['average'] & RushYards['high'] & Sacks['average'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['ok'] & HomeField['away'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['low'] & RushYards['high'] & Sacks['average'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['good'] & HomeField['away'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['low'] & RushYards['average'] & Sacks['low'] &
+        Interceptions['high'] & TravelDistance['high'] & Weather['bad'] & HomeField['away'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['low'] & RushYards['average'] & Sacks['low'] &
+        Interceptions['high'] & TravelDistance['high'] & Weather['ok'] & HomeField['away'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['average'] & RushYards['high'] & Sacks['low'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['bad'] & HomeField['away'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['average'] & RushYards['high'] & Sacks['high'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['ok'] & HomeField['neutral'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['average'] & RushYards['low'] & Sacks['average'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['bad'] & HomeField['neutral'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['high'] & Sacks['average'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['bad'] & HomeField['neutral'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['average'] & Sacks['low'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['bad'] & HomeField['neutral'],
+        WinningPercent['Lose']
+    ),
+    ctrl.Rule(
+        PassingYards['high'] & RushYards['low'] & Sacks['average'] &
+        Interceptions['low'] & TravelDistance['low'] & Weather['bad'] & HomeField['neutral'],
         WinningPercent['Lose']
     )
 ]
