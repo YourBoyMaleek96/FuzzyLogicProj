@@ -155,7 +155,46 @@ team2_input = {
 }
 
 
+simulator = ctrl.ControlSystemSimulation(system)
 
+# Pass input for team 1
+for key, value in team1_input.items():
+    simulator.input[key] = value
+
+# Compute winning percentage for team 1
+simulator.compute()
+
+# Get winning percentage for team 1
+winning_percent_team1 = simulator.output['WinningPercent']
+
+# Reset the simulator for team 2
+simulator.reset()
+
+# Pass input for team 2
+for key, value in team2_input.items():
+    simulator.input[key] = value
+
+# Compute winning percentage for team 2
+simulator.compute()
+
+# Get winning percentage for team 2
+winning_percent_team2 = simulator.output['WinningPercent']
+
+
+# Print winning percentages for both teams
+print(f"Team 1 Winning Percentage: {winning_percent_team1:.2f}")
+print(f"Team 2 Winning Percentage: {winning_percent_team2:.2f}")
+
+
+# Determine the winner
+if winning_percent_team1 > winning_percent_team2:
+    winner = "Team 1"
+elif winning_percent_team1 < winning_percent_team2:
+    winner = "Team 2"
+else:
+    winner = "It's a draw"
+
+print(f"The winner is: {winner}")
 
 # Plot the membership functions
 
