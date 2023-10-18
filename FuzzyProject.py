@@ -290,16 +290,6 @@ for week in range(1, 10):
     print(f"{week:<10}{team_name:<15}{opponent:<15}{winning_percent_team:<20}{(1 - winning_percent_team):<20}{winner:<15}")
    
 
-# Add code to handle the last week if needed
-
-
-
-
-
-
-
-# Plot the membership functions
-
 
 # Plot the membership functions
 """ for var in [PassingYards, RushYards, Sacks, Interceptions, TravelDistance, Weather, HomeField, WinningPercent]:
