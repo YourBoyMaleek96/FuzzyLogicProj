@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "fuzzy-logic-402217",
+  "private_key_id": "f71613fbaa5abdfe78082c0a5591ae05f59ae850",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCsRsZcpA+IeA4k\nbNRV4tV6ZGTCxSTkUOvBv7dwrUCBNwP9A6Gi6kFSq0cz0Snud4BzOSTwbeVReyTe\n9S87i02U927C2nMu+eK7oSoLy1TZeRFUweVqsEfRkIjmnuQRPGYu/fvFAowAaatj\nmOFjfMaRXS4YXrWzHuA06dYn+khowQPHaUU2ZotYOGnBdO5tseN6hwbQUMUSis2E\nHAIy7TRowCy7pguuucTHjO1+IYkZHcDJmeo8skHKzUktLFPJemOYeYW+k9vwPLas\ngZnSFBEvlQSRrzSWKCBPXf7ZBd5xsOjhQ2cjyWEhSvjV/VvqkY5Rk19lrZ22CXtI\nH924YXPHAgMBAAECggEATeZg+vIargBvkKv/ZejA1GvCHkpsEKvAt2ccKWDGOseo\nT4gNVnAr4phdhYJOviyeUjvkRq3C1JHlDcZ7uaaXicVK+eQy0mqfSm2paBTlBMOY\ngSV+OjyE9S+wn+v4QAz6PcSOTLsGmIcvv0UZodWBqqiiV9W3vsu24WZdds1XYbor\nruV3b3v4gDg3FswkTu0VnkjbwOPPhbKX7eFjE91mpT3RDiq0iOPgJ3xOYXi55V2U\n8MG9fQvd7s+glhufF6qoliWnE2+Ewb4s0ufm6b7o94tqx4kEYQWRj77aj/hbZFeX\nQnTWlS/W9TfytNR5CRFsIU6H0Zqch3bl4KAEbR8n+QKBgQDUCaha6Mzs9/KpHMyB\nQNZz+TIAy9+wFWbgtMlGuuLTJhO91jTWfeLTH6N5Wv8OZh8AGC8GJom2cBJEWWjg\n2J+4oq1SQYyar79cbtYHFhhSArinzlXl36H/8HxaXd2Tvwxp0Uqqcs1vS23sJlp0\nOJWfKs6QkZLfd4X0DKnXHZAnKQKBgQDP/rStA0h+burVRr3ZZzCq8JR4H0kaeE3L\njk1a6uqkReMvrv/oIAwIL7/nOyCeaz9iSIxFy4kGRoqqUH+aqswk6IkOS1I1zs+U\nCETU8GmWu+8Xoh0aBG5xbHh7fzJV2BzQSCtH9CQiaN3z85B0R3ZPmEqSKJuPfLq+\nO+GD5KjRbwKBgQDNGDZXEL0/LSnzt95721pTvSNHr+vC50Cmc1gI6TYDZN5Njkd3\nfTaMXhsChCkXJWIw9jNt8JLd+5M/t3gBnKcJsZiSasL00K/5WV/+ZLnLgcRY0/U0\nL1cEN/ogcpCjm3UHWaCuM/NQBpbhh8uQhTb8SSyam6SEMJlKEYGqiHbp2QKBgEGD\nxh9VEGmawGdrf/NRuJevbeSkXh9zU3XRnfYMVtpllRj482yHY6LUf4rzKeQcffuU\nRHLbmI6ce6MH9hmewOzDPiB9gyiluuay8BNuoqOzEK2OB8KhMLSTaSPlPdKiXvkQ\nMmnYseUQyRDFYHPv6olJu/trxQweSqgPLoqf5LkLAoGAP04sQnEom69yvKG+6o01\nUVHsGgSbvnEUc0EXDUgkoX5FSAwpFQFo2V4/oHxE1Bwgs2r2Yt0HeXMOoacUjwMm\nf5X58+4+z8jOQ6cHNl2IJcGFSJ4crSU1QeiUvcZWqe1GRadPk+fBnt7dD0yr6T+V\nCwvlCsdSfp4bOc7b9lTXtlY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "service-account@fuzzy-logic-402217.iam.gserviceaccount.com",
+  "client_id": "100415476925001975129",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service-account%40fuzzy-logic-402217.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
