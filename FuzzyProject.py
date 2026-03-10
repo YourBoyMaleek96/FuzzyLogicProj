@@ -3,6 +3,9 @@ import skfuzzy as sk
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 import matplotlib.pyplot as plt
+import pandas as pd
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 # input vaariables
 PassingYards = ctrl.Antecedent(np.arange(0,400,1), 'PassingYards')
@@ -231,6 +234,68 @@ rules = team1_rules + team2_rules
 
 # Create control system
 system = ctrl.ControlSystem(rules)
+# Define the scope and credentials
+scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+creds = ServiceAccountCredentials.from_json_keyfile_name('fuzzy.json', scope)
+
+# Authorize the client
+client = gspread.authorize(creds)
+
+# Open the Google Sheet
+sheet = client.open('FuzzyData')  # Replace with the name of your Google Sheet
+
+# Get the first (or specific) worksheet
+worksheet = sheet.get_worksheet(0)  # Replace with the index of your worksheet if needed
+
+# Get all values from the worksheet as a list of lists
+input_data = worksheet.get_all_values()
+
+# Assuming the first row contains column headers, convert to a pandas DataFrame
+input_data = pd.DataFrame(input_data[1:], columns=input_data[0])
+
+for week in range(1, 10):
+    week_data = input_data[input_data['Week'] == str(week)]
+
+    print(f"{'Week':<10}{'Team1':<15}{'Team2':<15}{'Team 1 win %':<20}{'Team 2 win %':<20}{'Winner':<15}")
+    for _, row in week_data.iterrows():
+        team_name = row['Team']
+        team_input = {
+            'PassingYards': float(row['PassingYards']),
+            'RushYards': float(row['RushYards']),
+            'Sacks': float(row['Sacks']),
+            'Interceptions': float(row['Interceptions']),
+            'TravelDistance': float(row['TravelDistance']),
+            'Weather': float(row['Weather']),
+            'HomeField': float(row['HomeField']),
+        }
+
+    # Create control system and simulator
+    system = ctrl.ControlSystem(rules)
+    simulator = ctrl.ControlSystemSimulation(system)
+
+    # Pass input for the team
+    for key, value in team_input.items():
+        simulator.input[key] = value
+
+    # Compute winning percentage
+    simulator.compute()
+    winning_percent_team = simulator.output['WinningPercent']
+
+    # Determine the opponent
+    opponent = input_data.loc[(input_data['Week'] == str(week)) & (input_data['Team'] != team_name)]['Team'].values[0]
+
+    # Determine the winner
+    winner = team_name if winning_percent_team > 0.5 else opponent
+
+    print(f"{week:<10}{team_name:<15}{opponent:<15}{winning_percent_team:<20}{(1 - winning_percent_team):<20}{winner:<15}")
+   
+
+
+# Plot the membership functions
+""" for var in [PassingYards, RushYards, Sacks, Interceptions, TravelDistance, Weather, HomeField, WinningPercent]:
+    var.view()
+
+plt.show() """ 
 
 
 
